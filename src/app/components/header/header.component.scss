@@ -1,0 +1,44 @@
+:host {
+ display: flex;
+ width: 100%;
+ background-color: gray;
+}
+
+.header {
+ display: flex;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+ max-width: 1200px;
+ margin: 0 auto;
+
+ .desktopLogo {
+  width: 300px;
+  cursor: pointer;
+ }
+
+ .mobilLogo {
+  width: 100px;
+  cursor: pointer;
+ }
+
+ .headerButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+ }
+
+ button {
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+ }
+
+ button:hover {
+  background-color: #e13628;
+ }
+}

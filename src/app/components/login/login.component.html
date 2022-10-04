@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="wrapper">
+  <form class="loginForm" [formGroup]="login" (ngSubmit)="submit()">
+    <h2 class="loginHeader">Logowanie</h2>
+    <label for="email">E-mail:</label>
+    <input id="email" formControlName="email" />
+    <div
+      class="validation"
+      *ngIf="login.get('email')?.invalid && login.get('email')?.touched"
+    >
+      <small *ngIf="login.get('email')?.errors?.required"
+        >Pole e-mail jest wymagane.
+      </small>
+      <small *ngIf="login.get('email')?.errors?.email"
+        >Nieprawidłowy format adresu e-mail.</small
+      >
+    </div>
+    <label for="password">Hasło:</label>
+    <input id="password" formControlName="password" />
+    <div
+      class="validation"
+      *ngIf="login.get('password')?.invalid && login.get('password')?.touched"
+    >
+      <small *ngIf="login.get('password')?.errors?.required"
+        >Pole hasło jest wymagane.
+      </small>
+      <small *ngIf="login.get('password')?.errors?.minlength"
+        >Minimum 6 znaków.</small
+      >
+    </div>
+    <button type="submit">Zaloguj</button>
+  </form>
+</div>

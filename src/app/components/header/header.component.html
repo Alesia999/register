@@ -1,0 +1,14 @@
+<header class="header">
+  <img
+    *ngIf="isDesktop; else isMobile"
+    class="desktopLogo"
+    src="../../assets/yanosik-logo-desktop.png"
+  />
+  <ng-template #isMobile>
+    <img class="mobilLogo" src="../../assets/yanosik-logo-mobile.png" />
+  </ng-template>
+  <div class="headerButtons">
+    <button routerLink="/rejestracja">Rejestracja</button>
+    <button routerLink="/logowanie">Logowanie</button>
+  </div>
+</header>

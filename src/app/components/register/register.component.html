@@ -1,0 +1,151 @@
+<app-header></app-header>
+<div class="wrapper">
+  <form class="registerForm" [formGroup]="register" (ngSubmit)="submit()">
+    <h2 class="registerHeader">Rejestracja</h2>
+    <div class="inputWrapper">
+      <label for="email">*E-mail:</label>
+      <input id="email" formControlName="email" />
+    </div>
+    <div
+      class="validation"
+      *ngIf="register.get('email')?.invalid && register.get('email')?.touched"
+      class="validation"
+    >
+      <small *ngIf="register.get('email')?.errors?.required"
+        >Pole e-mail jest wymagane.
+      </small>
+      <small *ngIf="register.get('email')?.errors?.email"
+        >Nieprawidłowy format adresu e-mail.</small
+      >
+    </div>
+    <div class="inputWrapper">
+      <label for="password">*Hasło:</label>
+      <input id="password" formControlName="password" />
+    </div>
+    <div
+      class="validation"
+      *ngIf="
+        register.get('password')?.invalid && register.get('password')?.touched
+      "
+      class="validation"
+    >
+      <small *ngIf="register.get('password')?.errors?.required"
+        >Pole hasło jest wymagane.
+      </small>
+      <small *ngIf="register.get('password')?.errors?.minlength"
+        >Minimum 6 znaków.</small
+      >
+    </div>
+    <div class="inputWrapper">
+      <label for="repeatPassword">*Powtórz hasło:</label>
+      <input id="repeatPassword" formControlName="repeatPassword" />
+    </div>
+    <div
+      class="validation"
+      *ngIf="
+        register.get('repeatPassword')?.invalid &&
+        register.get('repeatPassword')?.touched
+      "
+      class="validation"
+    >
+      <small *ngIf="register.get('repeatPassword')?.errors?.matching"
+        >Oba pola z hasłami powinny być takie same.
+      </small>
+    </div>
+    <div class="buttonWrapper">
+      <button type="submit">Zarejestruj</button>
+    </div>
+    <h2>Dodatkowe informacje</h2>
+    <div class="additionalInfo">
+      <div class="checkboxIntput">
+        <span class="check-label"> &nbsp;&nbsp; </span>
+        <span class="checkbox" (click)="acceptAll()">
+          <input
+            class="checkbox-fill"
+            type="checkbox"
+            id="markAll"
+            formControlName="markAll"
+          />
+          <label for="markAll"><span></span></label>
+        </span>
+        <label for="markAll">Akceptuję wszystkie zgody</label>
+      </div>
+
+      <div
+        class="checkboxIntput"
+        [style.backgroundColor]="
+          register.get('regul')?.invalid && register.get('regul')?.touched
+            ? '#fff3f3'
+            : '#ffff'
+        "
+      >
+        <span class="check-label"> * </span>
+        <span class="checkbox">
+          <input
+            class="checkbox-fill"
+            type="checkbox"
+            id="regul"
+            formControlName="regul"
+          />
+          <label for="regul"><span></span></label>
+        </span>
+
+        <label for="regul">Zapoznałem/am się z Regulaminem</label>
+      </div>
+      <div
+        class="validationAdditional"
+        *ngIf="register.get('regul')?.invalid && register.get('regul')?.touched"
+      >
+        <small *ngIf="register.get('regul')?.errors?.required"
+          >Pole jest wymagane.
+        </small>
+      </div>
+      <div
+        class="checkboxIntput"
+        [style.backgroundColor]="
+          register.get('privacy')?.invalid && register.get('privacy')?.touched
+            ? '#fff3f3'
+            : '#ffff'
+        "
+      >
+        <span class="check-label"> * </span>
+        <span class="checkbox">
+          <input
+            class="checkbox-fill"
+            type="checkbox"
+            id="privacy"
+            formControlName="privacy"
+          />
+          <label for="privacy"><span></span></label>
+        </span>
+        <label for="privacy">Zapoznałem/am się z Polityką Prywatności</label>
+      </div>
+      <div
+        class="validationAdditional"
+        *ngIf="
+          register.get('privacy')?.invalid && register.get('privacy')?.touched
+        "
+      >
+        <small *ngIf="register.get('privacy')?.errors?.required"
+          >Pole jest wymagane.
+        </small>
+      </div>
+      <div class="checkboxIntput">
+        <span class="check-label"> &nbsp;&nbsp; </span>
+        <span class="checkbox">
+          <input
+            class="checkbox-fill"
+            type="checkbox"
+            id="marketing"
+            formControlName="marketing"
+          />
+          <label for="marketing"><span></span></label>
+        </span>
+        <label for="marketing"
+          >Wyrażam zgodę na przetwarzanie moich danych w celach
+          marketingowych</label
+        >
+      </div>
+    </div>
+  </form>
+</div>
